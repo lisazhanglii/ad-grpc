@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message UpdateRequest {
+  // Define the structure for the update request
+  string id = 1;
+}
+
+message UpdateResponse {
+  // Define the response structure
+  string status = 1;
+}
+
+service UpdateMonitorServicer {
+  // Define an RPC method for streaming updates
+  rpc MonitorUpdates(stream UpdateRequest) returns (stream UpdateResponse);
+}

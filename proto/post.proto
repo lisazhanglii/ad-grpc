@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+enum PostState {
+  POST_NORMAL = 0;
+  LOCKED = 1;
+  POST_HIDDEN = 2;
+}
+
+message Post {
+  string title = 1;
+  string text = 2;
+  oneof media {
+    string video_url = 3;
+    string image_url = 4;
+  }
+  string author = 5; // Optional
+  int32 score = 6;
+  PostState state = 7;
+  google.protobuf.Timestamp publication_date = 8;
+}
+
+
+import "google/protobuf/timestamp.proto";
+
+service PostServicer {
+ rpc VotePost(VotePostRequest) returns (VotePostResponse);
+}
+
+message VotePostRequest {
+  string title = 1;
+  bool upvote = 2; // true for upvote, false for downvote
+}
+
+message VotePostResponse {
+  string status = 1;
+}
+

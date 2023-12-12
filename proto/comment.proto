@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+enum CommentState {
+  COMMENT_NORMAL = 0;
+  COMMENT_HIDDEN = 1;
+}
+message Comment {
+  string author = 1;
+  string text = 2;
+  int32 score = 3;
+  CommentState state = 4;
+  google.protobuf.Timestamp publication_date = 5;
+}
+service CommentServicer {
+ rpc VoteComment(VoteCommentRequest) returns (VoteCommentResponse);
+}
+
+message VoteCommentRequest {
+  string text = 1;
+  bool upvote = 2; // true for upvote, false for downvote
+}
+
+message VoteCommentResponse {
+  string status = 1;
+}

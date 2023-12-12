@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message Subreddit {
+  string name = 1; // Human-readable name
+  enum Visibility {
+    PUBLIC = 0;
+    PRIVATE = 1;
+    HIDDEN = 2;
+  }
+  Visibility visibility = 2;
+  repeated string tags = 3; // Set of tags attached to posts
+}
+service SubredditServicer {
+
+}
