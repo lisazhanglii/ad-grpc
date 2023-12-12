@@ -2,8 +2,6 @@ import grpc
 from concurrent import futures
 import time
 import argparse
-
-# Import the generated classes
 import user_pb2
 import user_pb2_grpc
 import post_pb2
@@ -14,7 +12,6 @@ import update_monitor_pb2
 import update_monitor_pb2_grpc
 from google.protobuf.timestamp_pb2 import Timestamp
 from datetime import datetime
-# Import the generated classes for subreddit
 import subreddit_pb2
 import subreddit_pb2_grpc
 
@@ -124,7 +121,6 @@ class CommentService(comment_pb2_grpc.CommentServicer):
 class UpdateMonitorService(update_monitor_pb2_grpc.UpdateMonitorServicer):
     def MonitorUpdates(self, request_iterator, context):
         # Implementation for streaming updates
-        # This is a placeholder implementation
         for request in request_iterator:
             # Logic to handle incoming requests and stream updates
             yield update_monitor_pb2.UpdateResponse(status="Update Received")
